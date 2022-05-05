@@ -1,0 +1,23 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "- [Project Description](#description)\r   - [How to install](#How-to-install)\r   - [Usage](#What-its-used-for)\r   - [Author(s)](#Who-built-this)\r   - [Questions](#Questions-and-how-to-reach-me)\r   ## description\r   ## How to install",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaZiD01A/Finalproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YaZiD01A/Finalproject/issues"
+  },
+  "homepage": "https://github.com/YaZiD01A/Finalproject#readme",
+  "dependencies": {
+    "mongoose": "^6.3.2"
+  }
+}
