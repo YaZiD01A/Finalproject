@@ -2,7 +2,7 @@ const express = require ("express")
 const db = require ("./config/connection")
 const {ApolloServer}= require ("apollo-server-express")
 const path = require ("path")
-const {resolvers, typedefs} = require ("./schema")
+const {resolvers, typeDefs} = require ("./schema")
 const {authMiddleware} = require ("./utils/auth")
 
 const PORT = process.env.PORT || 3001;
