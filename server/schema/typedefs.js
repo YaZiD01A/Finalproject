@@ -38,8 +38,9 @@ type Auth{
 type Mutation {
     createUser (firstName: String, lastName: String, email: String, password: String): Auth
     createCar (year: String, make: String, model: String, price: String): Car
-    updateUser (info:userInfo): User
+    updateUser (info: userInfo): User
     deleteCar (carID: String): Car
+    logIn (email: String, password: String): Auth
 }
 `;
 
