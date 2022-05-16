@@ -4,12 +4,9 @@ const secret = 'mysecretsshhhhh';
 const expiration = '3h';
 
 module.exports = {
-//Checking to see if you the user has a token
   authMiddleware: function ({ req }) {
-    // Help get the token
     let token = req.body.token || req.query.token || req.headers.authorization;
 
-    // Getting the token from the authorization section by separating Bearer
     if (req.headers.authorization) {
       token = token
         .split(' ')
