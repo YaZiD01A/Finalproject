@@ -1,3 +1,5 @@
+import Footer from './components/Footer';
+import Header from "./components/Header"
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
@@ -29,7 +31,8 @@ const client = new ApolloClient({
 function App() {
   return (
    <ApolloProvider client = {client}>
-     <h1>Hello World</h1>
+     <Header />
+     <Footer />
    </ApolloProvider>
    
   );

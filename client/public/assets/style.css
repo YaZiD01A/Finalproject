@@ -1,0 +1,19 @@
+body {
+    background-color: rgb(151, 151, 151);
+  }
+
+.cardColor{
+  background-color: rgb(0, 110, 110);
+  width: 1200px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+main{
+  margin-top: 10px;
+}
+
+#logo{
+  width: 100px;
+  height: 100px;
+}
