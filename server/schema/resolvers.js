@@ -92,6 +92,7 @@ const resolvers = {
         },
         
         logIn: async (parent,args,context) => {
+            console.log("working")
             const user = await User.findOne ({
                 email: args.email
                 

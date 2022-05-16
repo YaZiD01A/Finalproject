@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,10 +9,15 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {SIGN_IN} from '../utils/mutation'
+import {useMutation} from '@apollo/client'
+import Auth from '../utils/auth'
+
+
 
 function Copyright(props) {
   return (
@@ -29,13 +35,32 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
+const [userInfo, setUserInfo] = useState ({email:"", password:""})
+const [loginUser, {error}] = useMutation (SIGN_IN)
+
+const handleInputChange = (event) => {    
+    const { name, value } = event.target;    
+    setUserInfo({ ...userInfo, [name]: value });  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+    // const email = data.get ('email')
+    // const password = data.get ('password')
+    try {
+        const {data} = await loginUser ({
+            variables: {...userInfo}
+        })
+        console.log(data)
+        // Auth.login(data.loginUser.token)
+    }
+catch (error){
+    console.error(error)
+}
   };
 
   return (
@@ -51,7 +76,7 @@ export default function SignIn() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            {/* <LockOutlinedIcon /> */}
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -65,8 +90,9 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={handleInputChange}
               autoFocus
-            />
+              />
             <TextField
               margin="normal"
               required
@@ -76,6 +102,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleInputChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

@@ -1,5 +1,7 @@
 import Footer from './components/Footer';
 import Header from "./components/Header"
+import SignIn from './components/SignIn';
+import Home from './components/Home';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
@@ -9,9 +11,12 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
+
+
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
@@ -19,10 +24,11 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ` : '',
+      authorization: token ? `Bearer ${token}` : '',
     },
   };
 });
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
@@ -31,8 +37,15 @@ const client = new ApolloClient({
 function App() {
   return (
    <ApolloProvider client = {client}>
+     <Router>
      <Header />
+     <Routes>
+       <Route path="/" element={<Home />}/>
+       <Route path="/signIn" element={<SignIn />} />
+     </Routes>
      <Footer />
+     </Router>
+
    </ApolloProvider>
    
   );
