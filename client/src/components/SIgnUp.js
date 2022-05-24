@@ -33,7 +33,13 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const [userInfo, setUserInfo] = useState({ firstname: "", lastname: "",email: "", password: "" })
+  const [userInfo, setUserInfo] = useState({ 
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "" 
+  })
+
   const [SignUp, { error }] = useMutation(SIGN_UP)
 
   const handleInputChange = (event) => {
@@ -85,10 +91,10 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstname"
+                  name="firstName"
                   required
                   fullWidth
-                  id="firstname"
+                  id="firstName"
                   label="First Name"
                   onChange={handleInputChange}
                   autoFocus
@@ -98,9 +104,9 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="lastname"
+                  id="lastName"
                   label="Last Name"
-                  name="lastname"
+                  name="lastName"
                   autoComplete="family-name"
                   onChange={handleInputChange}
                 />
@@ -145,7 +151,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signIn" onClick={()=> console.log("clickinng")} variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

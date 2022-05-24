@@ -93,10 +93,12 @@ const resolvers = {
         
         logIn: async (parent,{email, password}) => {
             console.log("working")
-            console.log(args)
+            // console.log(args)
+            
             const user = await User.findOne ({
                 email                
             })
+            console.log(user)
             if (!user){
                 throw new AuthenticationError ("Wrong credentials")
             }
@@ -107,7 +109,7 @@ const resolvers = {
                 if (!checkPass){
                     throw new AuthenticationError ("Wrong credentials")
                 }
-                const token = signToken (user)
+                const token = signToken(user)
                 return {token, user}
             }
             
