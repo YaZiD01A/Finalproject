@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +13,9 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { SIGN_UP } from "../utils/mutation"
+import { useMutation } from '@apollo/client'
+import Auth from '../utils/auth'
 
 function Copyright(props) {
   return (
@@ -29,14 +33,34 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const [userInfo, setUserInfo] = useState({ firstname: "", lastname: "",email: "", password: "" })
+  const [SignUp, { error }] = useMutation(SIGN_UP)
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserInfo({ ...userInfo, [name]: value });
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+  try {
+    console.log(userInfo)
+    const { data } = await SignUp({
+      variables: { ...userInfo },
+    })
+    console.log(data.SignUp)
+    // Auth.login(data.loginUser.token)
+  }
+  catch (error) {
+    console.error(error)
+  }
+};
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,11 +85,12 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="firstname"
                   required
                   fullWidth
-                  id="firstName"
+                  id="firstname"
                   label="First Name"
+                  onChange={handleInputChange}
                   autoFocus
                 />
               </Grid>
@@ -73,10 +98,11 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
+                  id="lastname"
                   label="Last Name"
-                  name="lastName"
+                  name="lastname"
                   autoComplete="family-name"
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -87,6 +113,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -98,6 +125,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
