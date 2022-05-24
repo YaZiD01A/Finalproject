@@ -91,17 +91,17 @@ const resolvers = {
             throw new AuthenticationError ("Must be logged in")
         },
         
-        logIn: async (parent,args,context) => {
+        logIn: async (parent,{email, password}) => {
             console.log("working")
+            console.log(args)
             const user = await User.findOne ({
-                email: args.email
-                
+                email                
             })
             if (!user){
                 throw new AuthenticationError ("Wrong credentials")
             }
             const checkPass = await user.isCorrectedPassword (
-                args.password
+                password
                 )
                 
                 if (!checkPass){

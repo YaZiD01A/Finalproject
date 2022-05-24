@@ -1,3 +1,4 @@
+import React from 'react';
 import Footer from './components/Footer';
 import Header from "./components/Header"
 import SignIn from './components/SignIn';
@@ -11,6 +12,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import SignUp from './components/SIgnUp';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,6 +42,7 @@ function App() {
      <Routes>
        <Route path="/" element={<Home />}/>
        <Route path="/signIn" element={<SignIn />} />
+       <Route path="SignUp" element={<SignUp />} />
      </Routes>
      <Footer />
      </Router>

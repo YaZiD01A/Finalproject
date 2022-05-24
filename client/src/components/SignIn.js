@@ -13,8 +13,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {SIGN_IN} from '../utils/mutation'
-import {useMutation} from '@apollo/client'
+import { SIGN_IN } from '../utils/mutation'
+import { useMutation } from '@apollo/client'
 import Auth from '../utils/auth'
 
 
@@ -35,12 +35,13 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-const [userInfo, setUserInfo] = useState ({email:"", password:""})
-const [loginUser, {error}] = useMutation (SIGN_IN)
+  const [userInfo, setUserInfo] = useState({ email: "", password: "" })
+  const [logIn, { error }] = useMutation(SIGN_IN)
 
-const handleInputChange = (event) => {    
-    const { name, value } = event.target;    
-    setUserInfo({ ...userInfo, [name]: value });  };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,15 +53,16 @@ const handleInputChange = (event) => {
     // const email = data.get ('email')
     // const password = data.get ('password')
     try {
-        const {data} = await loginUser ({
-            variables: {...userInfo}
-        })
-        console.log(data)
-        // Auth.login(data.loginUser.token)
+      console.log(userInfo)
+      const { data } = await logIn({
+        variables: { ...userInfo }
+      })
+      console.log(data.logIn)
+      // Auth.login(data.loginUser.token)
     }
-catch (error){
-    console.error(error)
-}
+    catch (error) {
+      console.error(error)
+    }
   };
 
   return (
@@ -92,7 +94,7 @@ catch (error){
               autoComplete="email"
               onChange={handleInputChange}
               autoFocus
-              />
+            />
             <TextField
               margin="normal"
               required

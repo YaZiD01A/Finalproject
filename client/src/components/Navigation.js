@@ -16,10 +16,10 @@ function Navigation (){
               <Link class="nav-link active" aria-current="page" to="/">Home</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" to="/signIn">Sign In</Link>
+              <Link class="nav-link" to="/SignIn">Sign In</Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#sign-up">Sign Up</a>
+              <Link class="nav-link" to="/SignUp">Sign Up</Link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#search">Search</a>
