@@ -18,10 +18,17 @@ function Home(){
   const [disabled, setDisabled] = useState(true);
 console.log(data)
   const year = [
+    '2020',
+    '2019',
+    '2018',
+    '2017',
+    '2016',
+    '2015',
+    '2014',
     '2013',
-    '2020',
+    '2012',
     '2011',
-    '2020',
+    '2010',
   ];
 
   const make = [
@@ -75,10 +82,11 @@ console.log(data)
 
     return (
         <>
-        <header>
-            <h3>Homepage</h3>
+        <header className="center">
+            <h3>Car Key</h3>
+            <h4>Search by year</h4>
         </header>
-        <div>
+        <div className="center">
             <Dropdown handleSelect={handleChange} car= {car.year} options={year} name="year"/>
             <Dropdown handleSelect={handleChange} car= {car.make} options={make} name="make"/>
             <Dropdown handleSelect={handleChange} car= {car.model} options={model} name="model"/>
@@ -98,7 +106,7 @@ console.log(data)
         </div>
         )} */}
         {data?.getCar.map((carItem, i) => 
-          <div key={i}>
+          <div key={i} className="center">
           <p>{carItem.year}</p>
           <p>{carItem.make}</p>
           <p>{carItem.model}</p>
