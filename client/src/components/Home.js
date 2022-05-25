@@ -7,7 +7,6 @@ import { useQuery, useLazyQuery } from '@apollo/client'
 
 function Home(){ 
   const [foundItems, setFoundItems] = useState ([])
-  // const {data, loading, error, refetch} = useQuery(GETCAR)
   const [getCars, {loading, error, data}] = useLazyQuery(GETCAR)
   const [car, setCar] = useState({
       year: "",
@@ -51,8 +50,6 @@ console.log(data)
       "15000",
       "40000",
   ]
-//   hooks
-// use state in a fuctioinal component
 
   const handleChange = (event) => {
       const {name, value} = event.target
@@ -60,15 +57,11 @@ console.log(data)
 
       console.log(car)
 
-    // make an api call when the value changes
   };
 
   const handleSubmit = async ()=>{
     console.log(car.year)
     try {
-      // refetch({
-      //   year: car.year
-      // })
       getCars({
         variables: {year: car.year}
       })

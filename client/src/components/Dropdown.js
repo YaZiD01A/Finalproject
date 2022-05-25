@@ -17,19 +17,6 @@ const MenuProps = {
   },
 };
 
-// const names = [
-//     'Oliver Hansen',
-//     'Van Henry',
-//     'April Tucker',
-//     'Ralph Hubbard',
-//     'Omar Alexander',
-//     'Carlos Abbott',
-//     'Miriam Wagner',
-//     'Bradley Wilkerson',
-//     'Virginia Andrews',
-//     'Kelly Snyder',
-//   ];
-
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -41,7 +28,6 @@ function getStyles(name, personName, theme) {
 
 export function Dropdown({handleSelect, car, options, name}) {
   const theme = useTheme();
-//   const [personName, setPersonName] = React.useState([]);
 
   const handleChange = (event) => {
       handleSelect(event)
