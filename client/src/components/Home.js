@@ -35,20 +35,6 @@ console.log(data)
     "Mercedes",
     "Cheverolet",
     "BMW",
-  ];
-
-  const model = [
-      "Focus",
-      "GLC",
-      "Traverse",
-      "330i",
-  ]
-
-  const price = [
-      "10000",
-      "50000",
-      "15000",
-      "40000",
   ]
 
   const handleChange = (event) => {
@@ -77,27 +63,17 @@ console.log(data)
         <>
         <header className="center">
             <h3>CarKey</h3>
-            <h4>Search by year</h4>
         </header>
+
         <div className="center">
-            <Dropdown handleSelect={handleChange} car= {car.year} options={year} name="year"/>
-            {/* <Dropdown handleSelect={handleChange} car= {car.make} options={make} name="make"/>
-            <Dropdown handleSelect={handleChange} car= {car.model} options={model} name="model"/>
-            <Dropdown handleSelect={handleChange} car= {car.price} options={price} name="price"/> */}
-            
+            <h4>Search by year</h4>
+            <Dropdown handleSelect={handleChange} car= {car.year} options={year} name="year"/>            
+        </div>
+      
+        <div className="center">
            <Button variant="contained" onClick={()=>handleSubmit()}>Search</Button>
         </div>
 
-        {/* {disabled ===false && (
-
-        <div>
-            <p>year: {car.year}</p>
-            <p>make: {car.make}</p>
-            <p>model: {car.model}</p>
-            <p>price: {car.price}</p>
-            
-        </div>
-        )} */}
         {data?.getCar.map((carItem, i) => 
           <div key={i} className="center">
           <p>{carItem.year}</p>
