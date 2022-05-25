@@ -10,7 +10,9 @@
   The website helps the user search for a car by year. Please sign up before trying to search by year.
   ## How to install
 
-  Run it through Heroku 
+  Run it through the following Heroku link:
+
+  https://lit-tundra-16881.herokuapp.com/
   
   ## What its used for
   signing up and enter your address and find out who your represenatives are.
