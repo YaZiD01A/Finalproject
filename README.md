@@ -7,6 +7,7 @@
   - [Author(s)](#Who-built-this)
   - [Questions](#Questions-and-how-to-reach-me)
   ## description
+  The website helps the user search for a car by year.
   ## How to install
 
   Run it through Heroku 

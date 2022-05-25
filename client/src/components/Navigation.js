@@ -21,7 +21,7 @@ function Navigation (){
                 <Link className="nav-link" to="/SignUp" >Sign Up  </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#search">Search</a>
+                <a className="nav-link"></a>
               </li>
             </ul>
           </div>
