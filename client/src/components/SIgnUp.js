@@ -55,8 +55,8 @@ export default function SignUp() {
     const { data } = await SignUp({
       variables: { ...userInfo },
     })
-    console.log(data.SignUp)
-    Auth.login(data.SignUp.token)
+    console.log(data.createUser)
+    Auth.login(data.createUser.token)
   }
   catch (error) {
     console.error(error)
