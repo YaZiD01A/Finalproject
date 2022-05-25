@@ -58,7 +58,7 @@ export default function SignIn() {
         variables: { ...userInfo }
       })
       console.log(data.logIn)
-      // Auth.login(data.loginUser.token)
+      Auth.login(data.logIn.token)
     }
     catch (error) {
       console.error(error)

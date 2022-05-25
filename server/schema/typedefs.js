@@ -2,7 +2,7 @@ const {gql} = require ("apollo-server-express")
 const typeDefs = gql`
 type Query {
     me: User
-    getCar (carID: String): Car
+getCar (year: String): [Car]
     getAllCar:[Car]
     getAllUsers:[User]
 

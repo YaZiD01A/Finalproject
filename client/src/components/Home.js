@@ -2,8 +2,13 @@ import { handleBreakpoints } from '@mui/system';
 import React, {useState} from 'react';
 import Dropdown from './Dropdown';
 import Button from '@mui/material/Button';
+import { GETCAR } from '../utils/query';
+import { useQuery, useLazyQuery } from '@apollo/client'
 
 function Home(){ 
+  const [foundItems, setFoundItems] = useState ([])
+  // const {data, loading, error, refetch} = useQuery(GETCAR)
+  const [getCars, {loading, error, data}] = useLazyQuery(GETCAR)
   const [car, setCar] = useState({
       year: "",
       make: "",
@@ -11,18 +16,12 @@ function Home(){
       price: ""
   });
   const [disabled, setDisabled] = useState(true);
-
+console.log(data)
   const year = [
     '2013',
     '2020',
     '2011',
     '2020',
-    // 'Omar Alexander',
-    // 'Carlos Abbott',
-    // 'Miriam Wagner',
-    // 'Bradley Wilkerson',
-    // 'Virginia Andrews',
-    // 'Kelly Snyder',
   ];
 
   const make = [
@@ -57,8 +56,19 @@ function Home(){
     // make an api call when the value changes
   };
 
-  const handleSubmit = ()=>{
-    //   submit the values inside of tehh car state to the api
+  const handleSubmit = async ()=>{
+    console.log(car.year)
+    try {
+      // refetch({
+      //   year: car.year
+      // })
+      getCars({
+        variables: {year: car.year}
+      })
+    }
+    catch (err){
+      console.error(err)
+    }
     setDisabled(false)
 
   }
@@ -77,7 +87,7 @@ function Home(){
            <Button variant="contained" onClick={()=>handleSubmit()}>Search</Button>
         </div>
 
-        {disabled ===false && (
+        {/* {disabled ===false && (
 
         <div>
             <p>year: {car.year}</p>
@@ -86,6 +96,14 @@ function Home(){
             <p>price: {car.price}</p>
             
         </div>
+        )} */}
+        {data?.getCar.map((carItem, i) => 
+          <div key={i}>
+          <p>{carItem.year}</p>
+          <p>{carItem.make}</p>
+          <p>{carItem.model}</p>
+          <p>{carItem.price}</p>
+          </div>
         )}
         </>
 

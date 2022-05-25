@@ -21,8 +21,8 @@ const resolvers = {
         getCar: async (parent, args, context) => {
             
             if (context.user){
-                const getCar = await Car.findOne ({
-                    _id: args.carID
+                const getCar = await Car.find ({
+                    year: args.year
                 });
                 
                 return getCar;

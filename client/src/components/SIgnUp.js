@@ -61,7 +61,7 @@ export default function SignUp() {
       variables: { ...userInfo },
     })
     console.log(data.SignUp)
-    // Auth.login(data.loginUser.token)
+    Auth.login(data.SignUp.token)
   }
   catch (error) {
     console.error(error)
