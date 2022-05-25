@@ -3,8 +3,7 @@
   ## Table of Contents
   - [Project Description](#description)
   - [How to install](#How-to-install)
-  - [Usage](#What-its-used-for)
-  - [Author(s)](#Who-built-this)
+  - [Author](#Who-built-this)
   - [Questions](#Questions-and-how-to-reach-me)
   ## description
   The website helps the user search for a car by year. Please sign up before trying to search by year.
@@ -14,8 +13,6 @@
 
   https://lit-tundra-16881.herokuapp.com/
   
-  ## What its used for
-  signing up and enter your address and find out who your represenatives are.
   ## Who built this
   Yazid Alhujery
   ## What are the test parameters
