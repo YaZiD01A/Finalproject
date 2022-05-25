@@ -31,6 +31,19 @@ const resolvers = {
             
             
         },
+        getCarByMake: async (parent, args, context) => {
+            
+            if (context.user){
+                const getCarByMake = await Car.find ({
+                    make: args.make
+                });
+                
+                return getCarByMake;
+            }
+            throw new AuthenticationError ("Must be logged in")
+            
+            
+        },
         
         getAllCar: async (parent, args, context) => {
             const getAllCar = await Car.find ();

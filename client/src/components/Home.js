@@ -81,9 +81,9 @@ console.log(data)
         </header>
         <div className="center">
             <Dropdown handleSelect={handleChange} car= {car.year} options={year} name="year"/>
-            <Dropdown handleSelect={handleChange} car= {car.make} options={make} name="make"/>
+            {/* <Dropdown handleSelect={handleChange} car= {car.make} options={make} name="make"/>
             <Dropdown handleSelect={handleChange} car= {car.model} options={model} name="model"/>
-            <Dropdown handleSelect={handleChange} car= {car.price} options={price} name="price"/>
+            <Dropdown handleSelect={handleChange} car= {car.price} options={price} name="price"/> */}
             
            <Button variant="contained" onClick={()=>handleSubmit()}>Search</Button>
         </div>
