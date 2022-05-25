@@ -5,6 +5,7 @@ type Query {
 getCar (year: String): [Car]
     getAllCar:[Car]
     getAllUsers:[User]
+    getCarByMake(make: String): [Car]
 
 }
 
