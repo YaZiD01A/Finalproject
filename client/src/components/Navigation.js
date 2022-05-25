@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Auth from "../utils/auth"
 
 function Navigation (){
     return(
@@ -14,15 +15,23 @@ function Navigation (){
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/" >Home </Link>
               </li>
+              {Auth.loggedIn()? 
+              <>
+              <li className="nav-item">
+                <a className="nav-link" onClick={Auth.logout} >Log out</a>
+              </li>
+              </>
+              :
+              <>
               <li className="nav-item">
                 <Link className="nav-link" to="/SignIn" >Sign In </Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/SignUp" >Sign Up  </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link"></a>
-              </li>
+              </>
+            }
+             
             </ul>
           </div>
         </div>
